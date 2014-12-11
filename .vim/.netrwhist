@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/sdouglas/.vagrant.d'
+let g:netrw_dirhist_2='/home/sdouglas/.vagrant.d/data'
+let g:netrw_dirhist_3='/home/sdouglas/.vagrant.d/data/machine-index'
+let g:netrw_dirhist_4='/home/sdouglas/development/sean_douglas/python/.git'
