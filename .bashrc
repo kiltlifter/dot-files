@@ -65,8 +65,10 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+xterm*|rxvt*)    
+    # Set the user:hostname prompt to green
+    PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
+    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -110,13 +112,17 @@ if ! shopt -oq posix; then
 fi
 
 # Alias Section
-alias webshare='python /home/sdouglas/development/sean_douglas/python/webservers/simple_server.py'
+
+# HTTP webserver in the current directory, binding to the IP and PORT specified below
+IP="127.0.0.1"
+PORT=8000
+alias webshare='python -c "import SimpleHTTPServer;serve=SimpleHTTPServer.BaseHTTPServer.HTTPServer(('\''$IP'\'', $PORT), SimpleHTTPServer.SimpleHTTPRequestHandler);serve.serve_forever()"'
+
 alias c='clear'
-alias sublime="/home/sdouglas/development/editors/sublime_text_2/sublime_text &"
+alias sublime="/home/$USER/development/editors/sublime_text_2/sublime_text &"
 alias check-puppet='puppet apply --noop' #--modulepath="modules/" manifests/c2s2_sae.pp
 alias copy='rsync -rvP'
 alias gnome='gnome-open'
-alias wallpaper='bash ~/development/sean_douglas/bash-scripts/random_wallpaper.sh'
 alias vsphere='vmplayer -h 10.0.2.10 -u root -p vmware'
 
 alias cd6='cd ../../../../../../'
@@ -124,32 +130,3 @@ alias cd5='cd ../../../../../'
 alias cd4='cd ../../../../'
 alias cd3='cd ../../../'
 alias cd2='cd ../../'
-
-# Helpful variables
-USERSPACE=/media/blacknas/userspace/sdouglas
-
-PYTHON=/home/sdouglas/development/sean_douglas/python
-
-# Path Export Section
-JAVA_HOME=/usr/java/jdk1.7.0_67/
-export PATH=$PATH:/usr/java/jdk1.7.0_67/bin
-
-MAVEN_HOME=/home/sdouglas/tools/apache-maven-3.2.3
-export PATH=$PATH:/home/sdouglas/tools/apache-maven-3.2.3/bin
-
-export GOROOT=/usr/local/go
-export PATH=$PATH:/usr/local/go/bin
-
-export EDITOR=vim
-export userspace=/media/blacknas/userspace/sdouglas
-
-PACKER_HOME=/home/sdouglas/tools/packer-root
-export PATH=$PATH:$PACKER_HOME
-
-ANSIBLE_HOME=/home/sdouglas/tools/ansible
-export PATH=$PATH:$ANSIBLE_HOME/bin
-
-export PYTHONSTARTUP=~/.pythonrc
-
-# Set bash to vi style
-set -o vi
