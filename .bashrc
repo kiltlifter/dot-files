@@ -67,7 +67,8 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)    
     # Set the user:hostname prompt to green
-    PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
+    PS1='\[\e[1;37m\][\[\e[0m\]\[\e[1;31m\]\u\[\e[0m\]\[\e[1;37m\]@\[\e[0m\]\[\e[1;34m\]\h\[\e[0m\] \[\e[1;31m\]\W\[\e[0m\]\[\e[1;37m\]]\[\e[0m\] \[\e[1;37m\]\$\[\e[0m\] '
+    #PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
     #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
