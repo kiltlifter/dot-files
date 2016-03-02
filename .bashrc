@@ -12,6 +12,9 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# Trim long paths
+PROMPT_DIRTRIM=2
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -112,6 +115,31 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Perform file completion in a case insensitive fashion
+bind "set completion-ignore-case on"
+
+# Treat hyphens and underscores as equivalent
+bind "set completion-map-case on"
+
+# Display matches for ambiguous patterns at first tab press
+bind "set show-all-if-ambiguous on"
+
+## SANE HISTORY DEFAULTS ##
+
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Save multi-line commands as one command
+shopt -s cmdhist
+
+# Record each line as it gets issued
+PROMPT_COMMAND='history -a'
+
+# Correct spelling errors during tab-completion
+shopt -s dirspell
+# Correct spelling errors in arguments supplied to cd
+shopt -s cdspell
+
 # Alias Section
 
 # HTTP webserver in the current directory, binding to the IP and PORT specified below
@@ -125,9 +153,12 @@ alias check-puppet='puppet apply --noop' #--modulepath="modules/" manifests/c2s2
 alias copy='rsync -rvP'
 alias gnome='gnome-open'
 alias vsphere='vmplayer -h 10.0.2.10 -u root -p vmware'
+alias vi="vim"
 
 alias cd6='cd ../../../../../../'
 alias cd5='cd ../../../../../'
 alias cd4='cd ../../../../'
 alias cd3='cd ../../../'
 alias cd2='cd ../../'
+
+export PATH="$PATH:/home/sdouglas/HP_Fortify/HP_Fortify_SCA_and_Apps_4.31/bin"
