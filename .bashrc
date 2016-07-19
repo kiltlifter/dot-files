@@ -154,6 +154,7 @@ alias copy='rsync -rvP'
 alias gnome='gnome-open'
 alias vsphere='vmplayer -h 10.0.2.10 -u root -p vmware'
 alias vi="vim"
+alias fuck='sudo $(history -p !!)'
 
 alias cd6='cd ../../../../../../'
 alias cd5='cd ../../../../../'
