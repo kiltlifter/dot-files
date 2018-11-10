@@ -2,6 +2,10 @@ set tabstop=4
 syntax on
 execute pathogen#infect('~/.vim/bundle/{}')
 
+set spelllang=en
+set spellfile=~/.vim/spell/en.utf-8.add
+set spell
+
 """
 " NERDTree Configuration
 """
